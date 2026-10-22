@@ -1,17 +1,9 @@
 'use strict';
-// Keep the official reservation flow and attribution. Never count a click as a booking.
-const bookingBase = 'https://designer.my.site.com/scheduling?slug=mid-ad-mk';
-const incoming = new URLSearchParams(location.search);
-const attributionKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','fbclid','gclid','ttclid','affiliate_id','source','platform','media','ad_source'];
-const bookingURL = new URL(bookingBase);
-for (const key of attributionKeys) {
-  const value = incoming.get(key);
-  if (value && value.length <= 2000) bookingURL.searchParams.set(key,value);
-}
-bookingURL.searchParams.set('lp_variant','sales-to-other-roles');
+// Booking happens in the embedded form (#reflame-booking); the CTAs only scroll there.
+// The form reads utm/fbclid from this page's URL and sends the booking event itself,
+// so never push a booking event here (it would be counted twice).
 window.dataLayer = window.dataLayer || [];
 for (const link of document.querySelectorAll('[data-booking]')) {
-  link.href = bookingURL.href;
   link.addEventListener('click',()=>{
     window.dataLayer.push({event:'lp_cta_click',lp:'midcareer_sales_change',section:link.dataset.position,selected_role:document.querySelector('[role=tab][aria-selected=true]')?.dataset.role});
   });
