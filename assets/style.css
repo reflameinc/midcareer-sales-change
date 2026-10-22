@@ -47,3 +47,6 @@
 .free-badge{color:#ed7400}
 .sticky-bar .cta{background:var(--cta-gradient);box-shadow:0 4px 0 #e46b00,0 7px 15px #ff7a001c}
 .highlight{background:linear-gradient(transparent 74%,#ffe873 74%,#ffe873 94%,transparent 94%)}
+/* Embedded booking form (Salesforce scheduling), added 2026-10-22. */
+.final-cta .final-cta-inner{max-width:600px}.booking-embed{margin:0 auto;padding:16px 12px 8px;background:#fff;border:1px solid var(--line);border-radius:12px;text-align:left;min-height:420px}.booking-fallback{font-size:14px;line-height:1.8;text-align:center}.booking-fallback a{color:var(--blue);text-decoration:underline}
+@media(max-width:760px){.booking-embed{padding:12px 8px 4px}}
